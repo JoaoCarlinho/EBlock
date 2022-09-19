@@ -7,7 +7,9 @@ RUN apt-get update && \
     rm -fr /var/lib/apt/lists/* && \
     rm -rf /etc/apt/sources.list.d/*
 
-RUN npm install --global --quiet npm truffle
+FROM base as pre-truffle
+
+RUN npm install --global --quiet npm truffle@5.0.2
 
 FROM base as truffle
 
@@ -15,7 +17,6 @@ RUN mkdir -p /home/app
 WORKDIR /home/app
 
 COPY package.json /home/app
-COPY package-lock.json /home/app
 
 RUN npm install --quiet
 
