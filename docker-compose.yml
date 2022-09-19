@@ -1,7 +1,8 @@
 ---
 version: '3.3'
 services:
-  genache:
+
+  ganache:
     image: trufflesuite/ganache-cli:latest
     ports:
       - "8545:8545"
@@ -21,3 +22,18 @@ services:
       - --debug
 # ENTRYPOINT ["node", "./build/cli.node.js"]
 # ENTRYPOINT ["node", "/app/ganache-core.docker.cli.js"]
+
+  truffle:
+    build:
+      context: ./truffle_build_context
+      target: truffle
+    depends_on:
+      - ganache
+    volumes:
+      - ./:/home/app
+      - /home/app/node_modules
+
+networks:
+  default:
+    name: blockchain
+
