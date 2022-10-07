@@ -1,2 +1,4 @@
 /ganache_data
 /eth-todo-list/node_modules
+*.gitkeep
+/eth-todo-list/build

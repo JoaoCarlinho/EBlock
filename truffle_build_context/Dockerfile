@@ -9,21 +9,21 @@ RUN apt-get update && \
 
 FROM base as pre-truffle
 
-RUN npm install --global --quiet npm truffle@5.0.2
+RUN npm install --global --quiet npm truffle
 
-FROM base as truffle
+FROM pre-truffle as truffle
 
 RUN mkdir -p /home/app
 WORKDIR /home/app
 
-COPY package.json /home/app
+# COPY package.json /home/app
 
-RUN npm install --quiet
+# RUN npm install --quiet
 
 COPY truffle-config.js /home/app
-COPY contracts /home/app/contracts
-COPY migrations /home/app/migrations/
-COPY test /home/app/test/
+# COPY contracts /home/app/contracts
+# COPY migrations /home/app/migrations/
+# COPY test /home/app/test/
 
 RUN ["truffle", "version"]
 CMD ["truffle", "init"]

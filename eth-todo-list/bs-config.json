@@ -1,0 +1,11 @@
+{
+    "server": {
+        "baseDir": [
+            "/mnt/d/Eblock/Eblock-react/src",
+            "/mnt/d/Eblock/eth-todo-list/build/contracts"
+        ],
+        "routes": {
+            "/vendor": "/mnt/d/Eblock/eth-todo-list/node_modules"
+        }
+    }
+}
