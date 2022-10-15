@@ -33,6 +33,17 @@ services:
       - ./:/home/app
       - /home/app/node_modules
 
+  eth-todo-list-frontend:
+    build:
+      context: ./eth-todo-list
+    ports:
+      - "3000:3000"
+    depends_on:
+      - truffle
+    volumes:
+      - ./:/code/app
+      - /code/app/node_modules
+
 networks:
   default:
     name: blockchain
